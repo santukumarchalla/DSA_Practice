@@ -1,0 +1,34 @@
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		int[] a = {2,1,5,1,3,2};
+		int k=8;
+		System.out.println(Codechef.meth(a,k));
+	}
+	
+	public static boolean meth(int[] a, int k) {
+	  int windowSum = 0;
+	  int right = 0;
+	  
+	  for(int left = 0; left<a.length; left++) {
+	      windowSum = windowSum + a[left];
+	      while(windowSum>k && right<=left) {
+	          windowSum = windowSum - a[right];
+	          right++;
+	      }
+	      if(windowSum == k) {
+	            return true;
+	          }
+	      
+	  }
+	  return false; 
+}
+}
+
+
+// Checks whether a contiguous subarray with sum equal to k exists.
+// Approach: Sliding Window
+// Works with non-negative numbers only.
+// Time Complexity: O(n)
+// Space Complexity: O(1)
