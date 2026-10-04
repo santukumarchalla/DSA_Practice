@@ -1,0 +1,28 @@
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		int[] a = {2,1,5,1,3,2};
+		int k=8;
+		System.out.println(Codechef.meth(a,k));
+	}
+	
+	public static boolean meth(int[] a, int k) {
+	    for(int i=0; i<a.length; i++) {
+	        int sum =0;
+	        for(int j=i; j<a.length; j++) {
+	            sum = sum + a[j];
+	            if(sum == k) {
+	                return true;
+	            }
+	        }
+	    }
+	    return false;
+	}
+}
+
+
+// Checks whether a contiguous subarray with sum equal to k exists.
+// Approach: Brute Force
+// Time Complexity: O(n^2)
+// Space Complexity: O(1)
