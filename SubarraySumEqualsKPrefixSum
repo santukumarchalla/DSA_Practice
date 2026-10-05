@@ -1,0 +1,33 @@
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		int[] a = {4,-3,2,6,-1,3,-2,5,1,-4};
+		int k=7;
+		System.out.println(Codechef.meth(a,k));
+	}
+	
+	public static boolean meth(int[] a, int k) {
+	  int sum = 0;
+	  HashSet<Integer> set = new HashSet<>();
+	  for(int i=0; i<a.length; i++) {
+	      sum = sum + a[i];
+	      if(sum==k) {
+	          return true;
+	      }
+	      int need = sum -k;
+	      if(set.contains(need)) {
+	          return true;
+	      }
+	      set.add(sum);
+	  }
+	  return false;
+}
+}
+
+
+// Checks whether a contiguous subarray with sum equal to k exists.
+// Approach: Prefix Sum + HashSet
+// Works with both positive and negative numbers.
+// Time Complexity: O(n)
+// Space Complexity: O(n)
