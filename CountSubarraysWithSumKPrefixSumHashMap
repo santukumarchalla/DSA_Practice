@@ -1,0 +1,39 @@
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		//int[] a = {4,-3,2,6,-1,3,-2,5,1,-4};
+		int[] a = {3,4,7,2,-3,1,4,2};
+		int k=7;
+		System.out.println(Codechef.meth(a,k));
+	}
+	
+	public static int meth(int[] a, int k) {
+	    HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+	    int sum = 0;
+	    int count =0;
+	    map.put(0,1);
+	    
+	    for(int i =0; i<a.length; i++) {
+	        sum = sum + a[i];
+	        int need = sum - k;
+	        if(map.containsKey(need)) {
+	            count = count + map.get(need);
+	        }
+	        map.put(sum, map.getOrDefault(sum,0)+1);
+	    }
+	    return count;
+	}
+}
+
+
+// Counts the number of contiguous subarrays with sum equal to k.
+// Approach: Prefix Sum + HashMap
+// Works with both positive and negative numbers.
+//
+// map.put(0, 1) handles subarrays starting from index 0,
+// so a matching subarray from the beginning is not missed.
+//
+// HashMap stores prefix sum frequencies to count all possible subarrays.
+// Time Complexity: O(n)
+// Space Complexity: O(n)
