@@ -1,0 +1,31 @@
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		String a = "abcabcbb";
+		System.out.println(Codechef.meth(a));
+	}
+	
+	public static int meth(String a) {
+	    int count = 0;
+	    for(int i=0; i<a.length(); i++) {
+	        HashSet<Character> set = new HashSet<>();
+	        for(int j=i; j<a.length(); j++) {
+	            char c = a.charAt(j);
+	            if(set.contains(c)) {
+	                break;
+	            }
+	            set.add(c);
+	            count = Math.max(count, j-i+1);
+	        }
+	    }
+	    return count;
+	}
+}
+
+
+// Finds the length of the longest substring without repeating characters.
+// Approach: Brute Force + HashSet
+// A new HashSet is created for every starting index.
+// Time Complexity: O(n^2)
+// Space Complexity: O(n)
