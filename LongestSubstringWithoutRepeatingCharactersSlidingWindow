@@ -1,0 +1,30 @@
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		String str = "ababcccdbe";
+		System.out.println(Codechef.method(str));
+	}
+	
+	public static int method (String a) {
+	    int count = 0, left = 0;
+	    HashSet<Character> set = new HashSet<>();
+	    for(int i=0; i<a.length(); i++) {
+	        char c= a.charAt(i);
+	        while(set.contains(c)) {
+	            set.remove(a.charAt(left));
+	            left++;
+	        }
+	        set.add(c);
+	        count = Math.max(count, i-left+1);
+	    }
+	    return count;
+	} 
+}
+
+// Finds the length of the longest substring without repeating characters.
+// Approach: Sliding Window + HashSet
+// Uses two pointers (left and right) to maintain a window of unique characters.
+// When a duplicate is found, move left until the duplicate is removed.
+// Time Complexity: O(n)
+// Space Complexity: O(1) because our input is small alphabets
