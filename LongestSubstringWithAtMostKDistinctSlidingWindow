@@ -1,0 +1,46 @@
+import java.util.*;
+
+class Codechef {
+    public static void main(String[] args) throws java.lang.Exception {
+        String str = "ababcccdbe";
+        int k = 2;
+
+        System.out.println(Codechef.method(str, k));
+    }
+
+    public static int method(String a, int k) {
+        int count = 0;
+        int left = 0;
+
+        HashMap<Character, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < a.length(); i++) {
+            char c = a.charAt(i);
+
+            map.put(c, map.getOrDefault(c, 0) + 1);
+
+            while (map.size() > k) {
+                char ch = a.charAt(left);
+
+                if (map.get(ch) == 1) {
+                    map.remove(ch);
+                } else {
+                    map.put(ch, map.get(ch) - 1);
+                }
+
+                left++;
+            }
+
+            count = Math.max(count, i - left + 1);
+        }
+
+        return count;
+    }
+}
+
+// Finds the length of the longest substring with at most k distinct characters.
+// Approach: Sliding Window + HashMap
+// HashMap stores each character and its frequency within the current window.
+// When distinct characters exceed k, move the left pointer and reduce frequencies.
+// Time Complexity: O(n)
+// Space Complexity: O(k)
