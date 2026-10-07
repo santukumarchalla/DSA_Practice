@@ -1,0 +1,30 @@
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		String str = "ababcccdbe";
+		int k =2;
+		System.out.println(Codechef.method(str,k));
+	}
+	
+	public static int method (String a, int k) {
+	    int count = 0;
+	    for(int i=0; i<a.length(); i++) {
+	        HashSet<Character> set = new HashSet<>();
+	        for(int j=i; j<a.length(); j++) {
+	            set.add(a.charAt(j));
+	            if(set.size()>k) {
+	                break;
+	            }
+	            count = Math.max(count, j-i+1);
+	        }
+	        
+	    }
+	    return count;
+	} 
+}
+
+// Finds the length of the longest substring with at most k distinct characters.
+// Approach: Brute Force + HashSet
+// Time Complexity: O(n²)
+// Space Complexity: O(1), small alphabets only
