@@ -1,0 +1,34 @@
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		String str = "AABABBA";
+		int k=1;
+		System.out.println(Codechef.meth(str,k));
+	}
+	
+	public static int meth(String str, int k) {
+	    int maxLength = 0;
+	    for(int i=0; i<str.length(); i++) {
+	        int[] count = new int[26];
+	        int maxFreq = 0;
+	        for(int j=i; j<str.length(); j++) {
+	            count[str.charAt(j)-'A']++;
+	            maxFreq = Math.max(maxFreq, count[str.charAt(j)-'A']);
+	            int need = (j-i+1) - maxFreq;
+	            if(need>k) {
+	                break;
+	            }
+	            maxLength = Math.max(maxLength, j-i+1);
+	        }
+	    }
+	    return maxLength;
+	}
+}
+
+// Finds the longest substring that can be made of the same character
+// by replacing at most k characters.
+// Approach: Brute Force
+// Assumption: Input contains only uppercase English letters (A-Z).
+// Time Complexity: O(n^2)
+// Space Complexity: O(1) - fixed array of 26 characters
