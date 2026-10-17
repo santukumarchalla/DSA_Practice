@@ -1,0 +1,42 @@
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		int target = 393;
+		System.out.println((meth(target)));
+	}
+	
+	public static int meth(int num) {
+	    
+	  int l = 1;
+	  int h = num;
+	  int result = 0;
+	  
+	  if(num==0) {
+	      return result;
+	  }
+	  
+	  while(l<=h) {
+	      int m= l+(h-l)/2;
+	      long square = (long)m*m;
+	      if(square == num) {
+	          return m;
+	      }
+	      else if(square<num) {
+	          result= m;
+	          l =m+1;
+	      }
+	      else {
+	          h = m-1;
+	      }
+	  }
+	  return result;
+	}
+}
+
+// Finds the integer square root of a non-negative number.
+// Approach: Binary Search
+// Returns the floor value when the number is not a perfect square.
+// Uses long multiplication to avoid integer overflow.
+// Time Complexity: O(log n)
+// Space Complexity: O(1)
