@@ -1,0 +1,35 @@
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		int[] arr = {2,4,6,8,10,12,14,16,18,20,22};
+		int target = 19;
+		System.out.println(meth(arr, target));
+	}
+	
+	public static int meth(int[] arr, int target) {
+	    int l = 0;
+	    int h = arr.length-1;
+	    
+	    while(l<=h) {
+	        int m = l + (h - l)/2;
+	        if(arr[m]==target) {
+	            return m;
+	        }
+	        if(arr[m]<target) {
+	            l = m+1;
+	        }
+	        else {
+	            h = m-1;
+	        }
+	    }
+	    return -1;
+	}
+}
+
+// Searches for a target element in a sorted array.
+// Approach: Binary Search (Iterative)
+// If the target is found, returns its index; otherwise, returns -1.
+// Prerequisite: The array must be sorted.
+// Time Complexity: O(log n)
+// Space Complexity: O(1)
