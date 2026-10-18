@@ -1,0 +1,33 @@
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	    int[] arr = {1,2,3,4,6,6,8,9,12,14,16,18,21,25};
+		int target = 7;
+		System.out.println(insertSearch(arr, target));
+	}
+	
+	public static int insertSearch(int[] arr, int target) {
+	    int l=0, h=arr.length-1;
+	    
+	    while(l<=h) {
+	        int mid = l+(h-l)/2;
+	        if(arr[mid]==target) {
+	        return mid;
+	    }
+	    else if(arr[mid]>target) {
+	        h=mid-1;
+	    }
+	    else {
+	        l = mid+1;
+	    }
+	    }
+	    return l;
+	}
+}
+
+// Finds the index where the target should be inserted in a sorted array.
+// Approach: Binary Search
+// Returns the target's index if found; otherwise, returns its insertion position.
+// Time Complexity: O(log n)
+// Space Complexity: O(1)
