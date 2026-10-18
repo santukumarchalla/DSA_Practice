@@ -1,0 +1,58 @@
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	    int[] arr = {1,2,3,4,6,6,8,9,12,14,16,18,21,25};
+		int target = 7;
+		System.out.println((floor(arr, target)));
+		System.out.println((ceil(arr, target)));
+	}
+	
+	public static int floor(int[] arr, int target) {
+	    int l=0, h=arr.length-1;
+	    int floor = -1;
+	    
+	    while(l<=h) {
+	        int mid = l+(h-l)/2;
+	        if(arr[mid]==target) {
+	        return arr[mid];
+	    }
+	    else if(arr[mid]>target) {
+	        h=mid-1;
+	    }
+	    else {
+	        floor = arr[mid];
+	        l = mid+1;
+	    }
+	    }
+	    return floor;
+	}
+	
+	public static int ceil(int[] arr, int target) {
+	    int l=0, h=arr.length-1;
+	    int ceil = -1;
+	    
+	    while(l<=h) {
+	        int mid = l+(h-l)/2;
+	        if(arr[mid]==target) {
+	        return arr[mid];
+	    }
+	    else if(arr[mid]>target) {
+	        ceil = arr[mid];
+	        h=mid-1;
+	    }
+	    else {
+	        l = mid+1;
+	    }
+	    }
+	    return ceil;
+	}
+}
+
+// Finds the floor and ceil values of a target in a sorted array.
+// Approach: Binary Search
+// Floor: Largest element less than or equal to the target.
+// Ceil: Smallest element greater than or equal to the target.
+// Returns -1 if no valid floor or ceil exists.
+// Time Complexity: O(log n)
+// Space Complexity: O(1)
